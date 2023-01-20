@@ -1,26 +1,27 @@
 const express = require("express");
-const productRouter = express.Router();
-const { getAllProducts, addProduct } = require("../controllers/Product")
+const userRouter = express.Router();
+const { getAllUsers, addUser } = require("../controllers/User")
 
-//producs
-productRouter
+//users
+userRouter
     .route("/")
-    .get(getAllProducts)
-    .post(addProduct);
+    .get(getAllUsers)
+    .post(addUser);
     
-productRouter
+userRouter
     .route("/:id")
     .get((req, res) => {
         res.status(200).json({
             status: "ok",
-            action: "get a product",
+            action: "get a user",
             id: req.params.id
         })
+
     })
     .put((req, res) => {
         res.status(200).json({
             status: "ok",
-            action: "modify a product",
+            action: "modify a user",
             id: req.params.id
         })
 
@@ -28,10 +29,10 @@ productRouter
     .delete((req, res) => {
         res.status(200).json({
             status: "ok",
-            action: "delete a product",
+            action: "delete a user",
             id: req.params.id
         })
 
     })
 
-module.exports = productRouter;
+module.exports = userRouter;
