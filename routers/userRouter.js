@@ -1,6 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
-const { getAllUsers, addUser } = require("../controllers/User")
+const { getAllUsers, addUser, deleteUser } = require("../controllers/User")
 
 //users
 userRouter
@@ -26,13 +26,6 @@ userRouter
         })
 
     })
-    .delete((req, res) => {
-        res.status(200).json({
-            status: "ok",
-            action: "delete a user",
-            id: req.params.id
-        })
-
-    })
+    .delete(deleteUser)
 
 module.exports = userRouter;

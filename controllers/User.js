@@ -23,8 +23,20 @@ const addUser = catchAsync(async (req, res) => {
     });
 });
 
+const deleteUser = catchAsync(async (req, res) => {
+
+    const user = await User.findById(req.params.id);
+    
+    await User.remove(user);
+    res.status(200).json({
+        status: "ok",
+        mensaje: "Eliminado correctamente"
+    });
+})
+
 module.exports = {
     getAllUsers,
     addUser,
+    deleteUser
 }
 
