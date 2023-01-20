@@ -1,6 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
-const { getAllUsers, addUser, deleteUser,getUserById } = require("../controllers/User")
+const { getAllUsers, addUser, deleteUser,getUserById,updateUser } = require("../controllers/User")
 
 //users
 userRouter
@@ -11,14 +11,7 @@ userRouter
 userRouter
     .route("/:id")
     .get(getUserById)
-    .put((req, res) => {
-        res.status(200).json({
-            status: "ok",
-            action: "modify a user",
-            id: req.params.id
-        })
-
-    })
+    .put(updateUser)
     .delete(deleteUser)
 
 module.exports = userRouter;

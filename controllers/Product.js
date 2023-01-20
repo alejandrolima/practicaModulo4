@@ -32,6 +32,20 @@ const addProduct = catchAsync(async (req, res) => {
     });
 });
 
+const updateProduct = catchAsync(async (req, res) => {
+    let updateProduct = await Product.findById(req.params.id);
+    updateProduct.name = req.body.name;
+    updateProduct.price = req.body.price;
+    updateProduct.unit = req.body.unit;
+    updateProduct.inventory = req.body.inventory;
+    updateProduct = await updateProduct.save();
+    res.status(200).json({
+        status: "ok",
+        dataUpdate: updateProduct,
+        mensaje: "Actualizado Correctamente"
+    });
+});
+
 const deleteProduct = catchAsync(async (req, res) => {
 
     const products = await Product.findById(req.params.id);
@@ -47,6 +61,7 @@ module.exports = {
     getAllProducts,
     addProduct,
     deleteProduct,
-    getProductById
+    getProductById,
+    updateProduct
 }
 

@@ -13,7 +13,7 @@ const getUserById = catchAsync(async (req, res) => {
     const user = await User.findById(req.params.id);
     res.status(200).json({
         status: "ok",
-        data: usuario,
+        data: user,
     });
 });
 
@@ -27,6 +27,19 @@ const addUser = catchAsync(async (req, res) => {
     res.status(200).json({
         status: "ok",
         dataInserted: newUser,
+    });
+});
+const updateUser = catchAsync(async (req, res) => {
+    let updateUser = await User.findById(req.params.id);
+    updateUser.email = req.body.email;
+    updateUser.password = req.body.password;
+    updateUser.firstName = req.body.firstName;
+    updateUser.lastName = req.body.lastName;
+    updateUser = await updateUser.save();
+    res.status(200).json({
+        status: "ok",
+        dataUpdate: updateUser,
+        mensaje: "Actualizado Correctamente"
     });
 });
 
@@ -45,6 +58,7 @@ module.exports = {
     getAllUsers,
     addUser,
     getUserById,
-    deleteUser
+    deleteUser,
+    updateUser
 }
 
