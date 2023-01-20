@@ -1,4 +1,4 @@
-const Product = require("../models/User");
+const User = require("../models/User");
 const catchAsync = require("../utils/catchAsync");
 
 const getAllUsers = catchAsync(async (req, res) => {
@@ -13,18 +13,18 @@ const getAllUsers = catchAsync(async (req, res) => {
 const addUser = catchAsync(async (req, res) => {
     let newUser = new User();
     newUser.name = req.body.name;
-    newProduct.price = req.body.price;
-    newProduct.unit = req.body.unit;
-    newProduct.inventory = req.body.inventory;
-    newProduct = await newProduct.save();
+    newUser.price = req.body.price;
+    newUser.firstName = req.body.firstName;
+    newUser.lastName = req.body.lastName;
+    newUser = await newUser.save();
     res.status(200).json({
         status: "ok",
-        dataInserted: newProduct,
+        dataInserted: newUser,
     });
 });
 
 module.exports = {
-    getAllProducts,
-    addProduct,
+    getAllUsers,
+    addUser,
 }
 
