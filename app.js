@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const productRouter = require("./routers/productRouter");
+const userRouter = require("./routers/userRouter");
 const app = express();
 app.use(express.json()); // req => body
 app.use(morgan('dev'));
