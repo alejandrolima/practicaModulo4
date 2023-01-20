@@ -1,6 +1,6 @@
 const express = require("express");
 const productRouter = express.Router();
-const { getAllProducts, addProduct } = require("../controllers/Product")
+const { getAllProducts, addProduct, deleteProduct } = require("../controllers/Product")
 
 //producs
 productRouter
@@ -25,13 +25,6 @@ productRouter
         })
 
     })
-    .delete((req, res) => {
-        res.status(200).json({
-            status: "ok",
-            action: "delete a product",
-            id: req.params.id
-        })
-
-    })
+    .delete(deleteProduct);
 
 module.exports = productRouter;

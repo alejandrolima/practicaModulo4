@@ -1,8 +1,9 @@
+const { response } = require("../app");
 const Product = require("../models/Product");
 const catchAsync = require("../utils/catchAsync");
 
 const getAllProducts = catchAsync(async (req, res) => {
-    const products = await Product.find(8);
+    const products = await Product.find();
     
     res.status(200).json({
         status: "ok",
@@ -23,8 +24,20 @@ const addProduct = catchAsync(async (req, res) => {
     });
 });
 
+const deleteProduct = catchAsync(async (req, res) => {
+
+    const products = await Product.findById(req.params.id);
+    
+    await Product.remove(products);
+    res.status(200).json({
+        status: "ok",
+        mensaje: "Eliminado correctamente"
+    });
+})
+
 module.exports = {
     getAllProducts,
     addProduct,
+    deleteProduct
 }
 
