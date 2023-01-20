@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/v1/product/", productRouter);
-//app.use("/api/v1/user/", userRouter);
+app.use("/api/v1/user/", userRouter);
 
 app.all("*", (req, res, next) => {
     throw new Error('route not found');
