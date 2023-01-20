@@ -14,6 +14,7 @@ mongoose.set('strictQuery', false);
 // MONGOOSE CONNECTION
 mongoose.connect(process.env.DB_URL, {}).then(async (con) => {
     console.log("connected to mongo");
+    //sincronize=true;
 
 }).catch((err) => {
     console.log(err);
