@@ -12,8 +12,8 @@ const getAllProducts = catchAsync(async (req, res) => {
 
 const addProduct = catchAsync(async (req, res) => {
     let newProduct = new Product();
-    newProduct.email = req.body.email;
-    newProduct.password = req.body.password;
+    newProduct.name = req.body.name;
+    newProduct.price = req.body.price;
     newProduct.unit = req.body.unit;
     newProduct.inventory = req.body.inventory;
     newProduct = await newProduct.save();

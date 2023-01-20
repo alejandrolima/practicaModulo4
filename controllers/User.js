@@ -12,8 +12,8 @@ const getAllUsers = catchAsync(async (req, res) => {
 
 const addUser = catchAsync(async (req, res) => {
     let newUser = new User();
-    newUser.name = req.body.name;
-    newUser.price = req.body.price;
+    newUser.email = req.body.email;
+    newUser.password = req.body.password;
     newUser.firstName = req.body.firstName;
     newUser.lastName = req.body.lastName;
     newUser = await newUser.save();
