@@ -2,11 +2,11 @@ const User = require("../models/User");
 const catchAsync = require("../utils/catchAsync");
 
 const getAllUsers = catchAsync(async (req, res) => {
-    const products = await User.find(8);
+    const users = await User.find(8);
     
     res.status(200).json({
         status: "ok",
-        data: products,
+        data: users,
     });
 });
 
