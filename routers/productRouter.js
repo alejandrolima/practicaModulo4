@@ -1,6 +1,6 @@
 const express = require("express");
 const productRouter = express.Router();
-const { getAllProducts, addProduct, deleteProduct } = require("../controllers/Product")
+const { getAllProducts, addProduct, deleteProduct,getProductById } = require("../controllers/Product")
 
 //producs
 productRouter
@@ -10,13 +10,7 @@ productRouter
     
 productRouter
     .route("/:id")
-    .get((req, res) => {
-        res.status(200).json({
-            status: "ok",
-            action: "get a product",
-            id: req.params.id
-        })
-    })
+    .get(getProductById)
     .put((req, res) => {
         res.status(200).json({
             status: "ok",

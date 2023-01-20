@@ -9,6 +9,13 @@ const getAllUsers = catchAsync(async (req, res) => {
         data: users,
     });
 });
+const getUserById = catchAsync(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    res.status(200).json({
+        status: "ok",
+        data: usuario,
+    });
+});
 
 const addUser = catchAsync(async (req, res) => {
     let newUser = new User();
@@ -26,5 +33,6 @@ const addUser = catchAsync(async (req, res) => {
 module.exports = {
     getAllUsers,
     addUser,
+    getUserById
 }
 

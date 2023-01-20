@@ -1,6 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
-const { getAllUsers, addUser } = require("../controllers/User")
+const { getAllUsers, addUser ,getUserById} = require("../controllers/User")
 
 //users
 userRouter
@@ -10,14 +10,7 @@ userRouter
     
 userRouter
     .route("/:id")
-    .get((req, res) => {
-        res.status(200).json({
-            status: "ok",
-            action: "get a user",
-            id: req.params.id
-        })
-
-    })
+    .get(getUserById)
     .put((req, res) => {
         res.status(200).json({
             status: "ok",

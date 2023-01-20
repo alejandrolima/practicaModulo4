@@ -11,6 +11,14 @@ const getAllProducts = catchAsync(async (req, res) => {
     });
 });
 
+const getProductById = catchAsync(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    res.status(200).json({
+        status: "ok",
+        data: product,
+    });
+});
+
 const addProduct = catchAsync(async (req, res) => {
     let newProduct = new Product();
     newProduct.name = req.body.name;
@@ -38,6 +46,7 @@ const deleteProduct = catchAsync(async (req, res) => {
 module.exports = {
     getAllProducts,
     addProduct,
-    deleteProduct
+    deleteProduct,
+    getProductById
 }
 
