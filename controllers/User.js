@@ -6,7 +6,7 @@ const getAllUsers = catchAsync(async (req, res) => {
     
     res.status(200).json({
         status: "ok",
-        data: products,
+        data: users,
     });
 });
 
